@@ -3,9 +3,13 @@ title: Searchkick
 ---
 # Searchkick Extra
 
-Paginate `Searchkick::Results` objects efficiently avoiding expensive oject-wrapping and without overriding.
+Paginate `Searchkick::Results` objects.
 
-The `Searchkick::Results` object has already done pagination calculations, we just need to tell Pagy how to read page and total values. It is expected that you let Searchkick handle the `page` and `per_page` variables instead of providing those values as options to Pagy.
+It is expected that you let Searchkick handle the `page` and `per_page` variables instead of providing the relative `:page` and `:items` variables to Pagy.
+
+The `Searchkick::Results` object has already consumed the `:page` and `:per_page` options passed to the `search` method. We just need to tell Pagy how to get the relative `:page` and `:count` from it.
+
+The downside of that approach is that the [items](items.md) extra cannot work with this extra.
 
 ## Synopsis
 
